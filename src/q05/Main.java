@@ -1,38 +1,23 @@
 import java.util.*;
 public class Main {
-    public static boolean isPrime(int num) {
-        if (num <= 1) return false;
-        for (int i = 2; i * i <= num; i++) {
-            if (num % i == 0) return false;
-        }
-        return true;
-    }
-    public static boolean isPerfect(int num) {
-        if (num <= 1) return false;
-        int sum = 0;
-        for (int i = 1; i <= num / 2; i++) {
-            if (num % i == 0) {
-                sum += i;
-            }
-        }
-        return sum == num;
-    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        for (int i = 0; i < n; i++) {
-            int num = sc.nextInt();
-            boolean prime = isPrime(num);
-            boolean perfect = isPerfect(num);
-            if (prime && perfect) {
-                System.out.println("Both");
-            } else if (prime) {
-                System.out.println("Prime");
-            } else if (perfect) {
-                System.out.println("Perfect");
-            } else {
-                System.out.println("Neither");
-            }
+        String shape = sc.next();
+        double area = 0;
+        if (shape.equalsIgnoreCase("circle")) {
+            double r = sc.nextDouble();
+            area = Math.PI * r * r;
+        } else if (shape.equalsIgnoreCase("rectangle")) {
+            double l = sc.nextDouble();
+            double w = sc.nextDouble();
+            area = l * w;
+        } else if (shape.equalsIgnoreCase("triangle")) {
+            double a = sc.nextDouble();
+            double b = sc.nextDouble();
+            double c = sc.nextDouble();
+            double s = (a + b + c) / 2.0;
+            area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
         }
+        System.out.printf("Area: %.2f", area);
     }
 }

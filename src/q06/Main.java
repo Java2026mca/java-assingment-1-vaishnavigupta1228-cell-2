@@ -2,22 +2,16 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String shape = sc.next();
-        double area = 0;
-        if (shape.equalsIgnoreCase("circle")) {
-            double r = sc.nextDouble();
-            area = Math.PI * r * r;
-        } else if (shape.equalsIgnoreCase("rectangle")) {
-            double l = sc.nextDouble();
-            double w = sc.nextDouble();
-            area = l * w;
-        } else if (shape.equalsIgnoreCase("triangle")) {
-            double a = sc.nextDouble();
-            double b = sc.nextDouble();
-            double c = sc.nextDouble();
-            double s = (a + b + c) / 2.0;
-            area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+        int n = sc.nextInt();
+        int a = 0, b = 1;
+        for (int i = 0; i < n; i++) {
+            System.out.print(a);
+            if (i < n - 1) {
+                System.out.print(" ");
+            }
+            int next = a + b;
+            a = b;
+            b = next;
         }
-        System.out.printf("Area: %.2f", area);
     }
 }
